@@ -18,7 +18,7 @@ alias df='df -h'                          # human-readable sizes
 alias rm="rm -i"                          # Avoid accedental removes
 alias free='free -m'                      # show sizes in MB
 alias more=less
-alias sdn="poweroff"                      # sdn = "sudo shutdown now"
+alias sdn="sudo poweroff"                 # sdn = "sudo shutdown now"
 alias ls="exa --color=always --git"
 alias tb="thunderbird"
 
@@ -41,10 +41,6 @@ alias migrate="php artisan migrate"
 # AdonisJS
 alias ace="node ace"
 alias arepl="node ace repl"
-
-# DOAS IS BETTER THAN SUDO!!!! >:(
-alias doas="doas --"
-alias sudo="doas"
 
 # Neovim > vim
 alias vim="nvim"
@@ -105,13 +101,13 @@ kill-foreground-process() {
 zle -N kill-foreground-process
 bindkey '^K' kill-foreground-process
 
+# Edit command
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
 # fnm stuff
-export PATH="/run/user/1000/fnm_multishells/11299_1748845994683/bin":$PATH
-export FNM_MULTISHELL_PATH="/run/user/1000/fnm_multishells/11299_1748845994683"
-export FNM_VERSION_FILE_STRATEGY="local"
-export FNM_DIR="/home/marcus/.local/share/fnm"
-export FNM_LOGLEVEL="info"
-export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
-export FNM_COREPACK_ENABLED="false"
-export FNM_RESOLVE_ENGINES="true"
-export FNM_ARCH="x64"
+source <(fnm env)
+
+# wasm-tools
+source <(wasm-tools completion zsh)
